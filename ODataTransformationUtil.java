@@ -115,37 +115,4 @@ public class ODataTransformationUtil {
     }
 
 
-    /**
-     * readded Shortcut to create an empty entity response (when no results are available).
-     * @param ees Description of the metadata
-     * @return A vali, empty entity response
-     */
-    public static EntitiesResponse emptyEntitiesResponse(final EdmEntitySet ees) {
-        return new EntitiesResponse() {
-
-            @Override
-            public EdmEntitySet getEntitySet() {
-                return ees;
-            }
-
-            @Override
-            public List<OEntity> getEntities() {
-                return new ArrayList<OEntity>();
-            }
-
-            @Override
-            public Integer getInlineCount() {
-                return null;
-            }
-
-            /**
-             * Not used?
-             * @return the skip token for this entity set
-             */
-            @Override
-            public String getSkipToken() {
-                return null;
-            }
-        };
-    }
-}
+ 
