@@ -1,4 +1,5 @@
 /* Copyright 2011 UNEP (http://www.unep.org)
+
  * This file is part of InforMEA Toolkit project.
  * InforMEA Toolkit is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -81,6 +82,57 @@ public class ODataTransformationUtil {
 
     /**
      * Shortcut to create an empty entity response (when no results are available).
+     * @param ees Description of the metadata
+     * @return A vali, empty entity response
+     */
+    public static EntitiesResponse emptyEntitiesResponse(final EdmEntitySet ees) {
+        return new EntitiesResponse() {
+
+            @Override
+            public EdmEntitySet getEntitySet() {
+                return ees;
+            }
+
+            @Override
+            public List<OEntity> getEntities() {
+                return new ArrayList<OEntity>();
+            }
+
+            @Override
+            public Integer getInlineCount() {
+                return null;
+            }
+
+            /**
+             * Not used?
+             * @return the skip token for this entity set
+             */
+            @Override
+            public String getSkipToken() {
+                return null;
+            }
+        };
+    }
+}
+
+ /**
+     * Utility method to create EntityResponse from OEntity
+     * @param entity Entity to encode in response
+     * @param ees Entity description
+     * @return EntitiesResponse required to generate the OData response
+     */
+    public static EntityResponse createEntityResponse(final OEntity entity, final EdmEntitySet ees) {
+        return new EntityResponse() {
+
+            @Override
+            public OEntity getEntity() {
+                return entity;
+            }
+        };
+    }
+
+    /**
+     * readded Shortcut to create an empty entity response (when no results are available).
      * @param ees Description of the metadata
      * @return A vali, empty entity response
      */
