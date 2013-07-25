@@ -113,23 +113,7 @@ public class ODataTransformationUtil {
             }
         };
     }
-}
 
- /**
-     * Utility method to create EntityResponse from OEntity
-     * @param entity Entity to encode in response
-     * @param ees Entity description
-     * @return EntitiesResponse required to generate the OData response
-     */
-    public static EntityResponse createEntityResponse(final OEntity entity, final EdmEntitySet ees) {
-        return new EntityResponse() {
-
-            @Override
-            public OEntity getEntity() {
-                return entity;
-            }
-        };
-    }
 
     /**
      * readded Shortcut to create an empty entity response (when no results are available).
